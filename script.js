@@ -1,6 +1,14 @@
 var video = document.querySelector("#videoElement");
 
-if (navigator.mediaDevices.getUserMedia) {
+Promise.all([
+  faceapi.nets.tinyFaceDetector.loadFromUri('/models'),
+  faceapi.nets.tinyLandmark68Net.loadFromUri('/models'),
+  faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
+  faceapi.nets.faceExpressionNet.loadFromUri('/models'),
+]).then(startVideo)
+
+funtion startVideo() {
+  if (navigator.mediaDevices.getUserMedia) {
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(function (stream) {
       video.srcObject = stream;

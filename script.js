@@ -1,4 +1,4 @@
-const video = document.getElementByID('video')
+const video = document.getElementById('video')
 
 function startVideo() {
   navigator.mediaDevices.getUserMedia(

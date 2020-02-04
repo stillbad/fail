@@ -5,10 +5,9 @@ Promise.all([
   faceapi.nets.tinyLandmark68Net.loadFromUri('/models'),
   faceapi.nets.faceRecognitionNet.loadFromUri('/models'),
   faceapi.nets.faceExpressionNet.loadFromUri('/models'),
-]).then(startVideo)
+])
 
-funtion startVideo() {
-  if (navigator.mediaDevices.getUserMedia) {
+ if (navigator.mediaDevices.getUserMedia) {
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(function (stream) {
       video.srcObject = stream;
@@ -16,7 +15,6 @@ funtion startVideo() {
     .catch(function (err0r) {
       console.log("Something went wrong!");
     });
-}
 
 video.addEventListener('play', () => {
   setInterval(async () => {

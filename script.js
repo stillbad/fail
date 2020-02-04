@@ -17,3 +17,9 @@ funtion startVideo() {
       console.log("Something went wrong!");
     });
 }
+
+video.addEventListener('play', () => {
+  setInterval(async () => {
+    const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks()>withfaceExpressions()
+  }, 100)
+})

@@ -1,11 +1,11 @@
-const video = document.getElementById('video')
+var video = document.querySelector("#videoElement");
 
-function startVideo() {
-  navigator.mediaDevices.getUserMedia(
-    { video: {} },
-    stream => video.srcObject = stream,
-    err => console.error(err)
-  )
+if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+      console.log("Something went wrong!");
+    });
 }
-
-startVideo()

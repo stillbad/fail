@@ -7,7 +7,8 @@ Promise.all([
   faceapi.nets.faceExpressionNet.loadFromUri('/models'),
 ])
 
- if (navigator.mediaDevices.getUserMedia) {
+
+if (navigator.mediaDevices.getUserMedia) {
   navigator.mediaDevices.getUserMedia({ video: true })
     .then(function (stream) {
       video.srcObject = stream;
@@ -15,9 +16,4 @@ Promise.all([
     .catch(function (err0r) {
       console.log("Something went wrong!");
     });
-
-video.addEventListener('play', () => {
-  setInterval(async () => {
-    const detections = await faceapi.detectAllFaces(video, new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withfaceExpressions()
-  }, 100)
-})
+}
